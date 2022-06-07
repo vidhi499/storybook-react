@@ -7,13 +7,22 @@ module.exports = {
     // Make whatever fine-grained changes you need
 
     config.resolve.alias["react-native$"] = "react-native-web";
-
+    config.module.rules.push([
+      {
+        test: /\.ttf$/,
+        loader: "url-loader", // or directly file-loader
+        include: path.resolve(
+          __dirname,
+          "node_modules/react-native-vector-icons"
+        ),
+      },
+    ]);
     // Return the altered config
     return config;
   },
   stories: [
-    "../src/storybook/stories/**/**/**/*.stories.mdx",
-    "../src/storybook/stories/**/**/**/*.stories.@(js|jsx|ts|tsx)",
+    "../src/storybook/stories/**/*.stories.mdx",
+    "../src/storybook/stories/**/*.stories.@(js|jsx|ts|tsx)",
   ],
   addons: [
     "@storybook/addon-links",
