@@ -7,7 +7,8 @@ module.exports = {
     // Make whatever fine-grained changes you need
 
     config.resolve.alias["react-native$"] = "react-native-web";
-
+    config.resolve.alias["@expo/vector-icons"] =
+      "react-native-vector-icons/dist";
     // Return the altered config
     return config;
   },
